@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Jquery Assignment</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h2>This is the most basic example.</h2>
+<p>Use an inspector to see the hidden form elements being generated below the table.</p>
+<div id="demo1">
+<select>
+    <option value="1">Cat</option>
+    <option value="2">Dog</option>
+    <option value="3">Horse</option>
+</select>
+<select>
+    <option value="4">Water Dragon</option>
+</select>
+</div>
+
+<h2>This example uses a callback function declared in the sourcecode (alertChange):</h2>
+<div id="demo2">
+<select>
+    <option value="1">Cat</option>
+    <option value="2">Dog</option>
+    <option value="3">Horse</option>
+</select>
+<select>
+    <option value="4">Water Dragon</option>
+</select>
+</div>
+
+<h2>This example Uses the alternative rendering mainly for mobile devices:</h2>
+<div id="demo3">
+<select>
+    <option value="1">Cat</option>
+    <option value="2">Dog</option>
+    <option value="3">Horse</option>
+</select>
+<select>
+    <option value="4">Water Dragon</option>
+</select>
+</div>
+
+<h2>This example starts with an empty div and loads the data via javascript:</h2>
+<div id="demo4">
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.assignment.js" type="text/javascript"></script>
+
+<script>
+    $("#demo1").assignment({type:"animal",class_button:'btn btn-primary'});
+
+    function alertChange(action,type,main_id,id_list){
+        var message = "The type is "+type+" , and the "+action+"ed values were:";
+        for(key in id_list){
+            message += id_list[key]+",";
+        }
+        alert(message);
+    }
+    $("#demo2").assignment({type:"animal",callback:"alertChange",class_button:'btn btn-primary'});
+    $("#demo3").assignment({type:"animal",style:"list"});
+    $("#demo4").assignment({type:"animal",class_button:'btn btn-primary'});
+    $("#demo4").assignment("load_data",{inactive:{1:"Cat",2:"Dog",3:"Horse"},active:{4:"Water Dragon"}});
+
+</script>
+
+
+</body>
+</html>
